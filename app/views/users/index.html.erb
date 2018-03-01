@@ -1,0 +1,41 @@
+<div id='users'>
+  <h3 class='text-center'>Users</h3>
+  <div class='col-xs-6' id='user-list-section'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          is="user-row"
+          v-for="user in users"
+          :user="user">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='col-xs-6' id='create-user-section'>
+    <div class='form-group'>
+      <label>Name:</label>
+      <input type="text" v-model="user.name" id='user-name-field' class='form-control'>
+      <span style="color:red">{{ errors.name }}</span>
+    </div>
+    <div class='form-group'>
+      <label>Age:</label>
+      <input type="number" v-model="user.age" id='user-age-field' class='form-control'>
+      <span style="color:red">{{ errors.age }}</span>
+    </div>
+    <button class='btn btn-success' v-on:click="addUser">Add</button>
+  </div>
+</div>
+
+<script type="text/x-template" id="user-row">
+  <tr>
+    <td>{{ user.name }}</td>
+    <td>{{ user.age }}</td>
+  </tr>
+</script>
